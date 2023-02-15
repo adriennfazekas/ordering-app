@@ -3,6 +3,7 @@ body {
     max-width: 800px;
     margin: auto;
 }
+
 /* HEADER */
 header {
     
@@ -17,12 +18,12 @@ header {
     color:white;
     margin-left: 20px;
 }
-h1 {
+.header-inner h1 {
     font-weight: 400;
     font-size: 39px;
     line-height: 29px;
 }
-h2 {
+.header-inner h2 {
     font-weight: 400;
     font-size: 22px;
     line-height: 15px;
@@ -35,22 +36,41 @@ h2 {
 
 ul {
     position: relative;
-    background-color: red;
+    padding-left: 150px;
 }
-il {
-   display: block;
-   padding-left: 20px;
+.menu-item li {
+   display: block;   
 }
 .emoji {
     position: absolute;
-    top: 18px;
-    left: 0;
+    left: 30px;
+    font-size: 78px;
 }
-button {
+.food {
+    font-size: 28px;
+    line-height: 25px;
+    padding-top: 15px;
+}
+.ingredients {
+    font-size: 16px;
+    line-height: 20px;
+    padding-right: 80px;
+}
+.price {
+    font-size: 20px;
+    line-height: 40px;
+}
+.solid {
     position: absolute;
-    top: 8px;
-    right: 20px;
-    border-radius: 50px;
+    left: 40px;
+    border: 1px solid #D2D2D2;
+}
+
+.increase {
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    border-radius: 40px;
     height: 40px;
     width: 40px;
     background-color: white;
@@ -60,4 +80,23 @@ button {
     font-weight: 200;
     font-size: 25px;
     text-align: center;
+}
+
+/* CHECKOUT */
+
+.purchase-btn {
+    
+    border: none;
+    background: #16DB99;
+    border-radius: 3px;
+    padding: 15;
+    width: 500px;
+
+    color: white;
+    font-family: 'Verdana';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+
 }
