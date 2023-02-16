@@ -85,6 +85,7 @@ ul {
 
 /* CHECKOUT */
 .checkout {
+    display: none; /* when click to tha + display block */
     position: relative;
     text-align: center;
     margin: 60px;
