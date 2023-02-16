@@ -3,38 +3,35 @@ import { menuArray } from "./data.js";
 
 let checkoutList = document.getElementById("checkout-list")
 let checkout = document.getElementById("checkout")
+let shoppingList = []
+
 
 document.addEventListener("click", function (e) {
 
     if (e.target.dataset.increase) {
         addOrdering(e.target.dataset.increase)
-        sumPrice(e.target.dataset.increase)
     }
     else if (e.target.dataset.remove) {
         removeFoodItem(e.target.dataset.remove)
     } 
+    else if (e.target.id == "purchase-btn") {
+        completeOrder()
+    }
 })
+
+function completeOrder() {
+    const moduleEl = document.getElementById("module")
+    moduleEl.style.display = "block"
+}
 
 function removeFoodItem(index) {
 
 }
 
-function sumPrice(itemId) {
-    const totalPriceEl = document.getElementById("checkout-totel-price")
-    let totalPrice = 0
-
-    totalPrice += menuArray[itemId].price
-
-    totalPriceEl.innerHTML = `
-        <h2 class="checkout-totel-price" id="checkout-totel-price">
-            Total price: $${totalPrice} 
-        </h2>
-        `
-}
 
 function addOrdering(itemId) {
-    let targetMenuArray = menuArray[itemId]  
-
+    let targetMenuArray = menuArray[itemId]
+    
     checkout.style.display = "block"
     
     checkoutList.innerHTML += `
@@ -46,8 +43,21 @@ function addOrdering(itemId) {
                 $${targetMenuArray.price} 
             </div>
             <div class="line-break"></div>
-                       
-         `
+        `
+    /* shopping lista amiben tároljuk az árakat majd összegezzük őket is kiiratjuk */
+    shoppingList.push(targetMenuArray.price)
+    
+    if (shoppingList) {
+        let sum = 0
+        shoppingList.forEach( function (price) {
+                sum += price
+        })
+        document.getElementById("checkout-totel-price").innerHTML = `
+            <h2 class="checkout-totel-price" id="checkout-totel-price">
+                Total price: $${sum} 
+            </h2>
+        `
+        }
     render()
 }
 

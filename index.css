@@ -100,7 +100,6 @@ ul {
     text-align: left;
     margin-left: 5px;
     line-height: 50px;
-    padding-top: 40px;
 }
 .checkout-list {   
     display: flex;
@@ -116,6 +115,10 @@ ul {
 }
 .line-break {
     width: 100%; /* új sorba kerül az új tétel amit beleteszünk a kosárba */
+}
+.checkout-hr {
+    border-top: 2px solid black;
+    margin-top: 15px;
 }
 
 .purchase-btn {
@@ -138,4 +141,46 @@ ul {
     font-size: 12px;
     font-weight: 400;
     line-height: 24px;
+}
+
+/* MODULE */
+.module {
+    display: none;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    text-align: center; 
+
+    max-width: 300px;
+    height: 330px;
+    border: 1px solid #757575;
+    border-radius: 2px;
+
+    background-color: white;
+}
+.module h1 {
+    font-family: Verdana;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31px;
+}
+input {
+    width: 90%;
+    padding: 15px;
+    margin: 5px;    
+    border: 1.3px solid #757575;
+    border-radius: 2px;
+}
+.module button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background-color: #16DB99;
+    color: white;
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: 700;
 }
