@@ -85,7 +85,7 @@ ul {
 
 /* CHECKOUT */
 .checkout {
-    display: none; /* when click to tha + display block */
+    display: block; /* when click to tha + display block */
     position: relative;
     text-align: center;
     margin: 60px;
@@ -102,15 +102,20 @@ ul {
     line-height: 50px;
     padding-top: 40px;
 }
-.checkout ul {
-    text-align: left;
-    padding-bottom: 5px;
-    padding-left: 0;
-}
-.checkout-list {    
+.checkout-list {   
+    display: flex;
+    flex-flow: wrap; 
+    justify-content: space-between;
     list-style: none;
     margin-left: 5px;
     line-height: 25px;
+    font-size: 28px;
+}
+.checkout-price {
+    font-size: 22px;
+}
+.line-break {
+    width: 100%; /* új sorba kerül az új tétel amit beleteszünk a kosárba */
 }
 
 .purchase-btn {
@@ -123,5 +128,14 @@ ul {
     font-family: 'Verdana';
     font-weight: 700;
     font-size: 16px;
+    line-height: 24px;
+}
+.remove-item-btn {
+    border: none;
+    background-color: white;
+    color: #BBBBBB;
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 24px;
 }

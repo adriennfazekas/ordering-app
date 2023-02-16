@@ -1,29 +1,59 @@
 import { menuArray } from "./data.js";
 
 
+let checkoutList = document.getElementById("checkout-list")
+let checkout = document.getElementById("checkout")
+
 document.addEventListener("click", function (e) {
 
     if (e.target.dataset.increase) {
         addOrdering(e.target.dataset.increase)
+        sumPrice(e.target.dataset.increase)
+    }
+    else if (e.target.dataset.remove) {
+        removeFoodItem(e.target.dataset.remove)
     } 
 })
 
+function removeFoodItem(index) {
+
+}
+
+function sumPrice(itemId) {
+    const totalPriceEl = document.getElementById("checkout-totel-price")
+    let totalPrice = 0
+
+    totalPrice += menuArray[itemId].price
+
+    totalPriceEl.innerHTML = `
+        <h2 class="checkout-totel-price" id="checkout-totel-price">
+            Total price: $${totalPrice} 
+        </h2>
+        `
+}
+
 function addOrdering(itemId) {
-    let targetMenuArray = menuArray[itemId]    
-    let checkoutList = document.getElementById("checkout-list")
-    let checkout = document.getElementById("checkout")
+    let targetMenuArray = menuArray[itemId]  
 
     checkout.style.display = "block"
     
     checkoutList.innerHTML += `
-            <li class="checkout-list" 
-                id="checkout-list"> ${targetMenuArray.name} $${targetMenuArray.price}  
-            </li>
+            <div class="checkout-item" id="checkout-item"> 
+                ${targetMenuArray.name}
+            </div> 
+            <button class="remove-item-btn" data-remove="${targetMenuArray.id}">remove</button>
+            <div class="checkout-price" id="checkout-price">    
+                $${targetMenuArray.price} 
+            </div>
+            <div class="line-break"></div>
+                       
          `
-         render()
+    render()
 }
 
-
+/* let sum = 0;
+shoppingCartArray.forEach(item => sum += item.price);
+*/
 
 function getFeedHTML() {
     let feedHTML = ""
