@@ -39,31 +39,39 @@ function completeOrder() {
     moduleEl.style.display = "block"
 }
 
-function removeFoodItem(index) {
-    shoppingList.splice(index, 1)  
+function removeFoodItem(index) {    
+    shoppingList.splice(index, 1)    
     
+    getPurchaseFeed()
 }
 
 
 function addOrder(itemId) {
-    let targetMenuArray = menuArray[itemId]
-    
-    checkout.style.display = "block"
+    let targetMenuArray = menuArray[itemId]    
     
     /* shopping lista amiben tároljuk az árakat majd összegezzük őket is kiiratjuk */
     shoppingList.push(targetMenuArray)
     let index = shoppingList.lastIndexOf(targetMenuArray)
+    
+    getPurchaseFeed()
+}
 
-    checkoutList.innerHTML += `
-            <div class="checkout-item" data-remove="${index}" id="checkout-item"> 
-                ${targetMenuArray.name}
-            </div> 
-            <button class="remove-item-btn" data-remove="${index}">remove</button>
-            <div class="checkout-price" data-remove="${index} id="checkout-price">    
-                $${targetMenuArray.price} 
-            </div>
-            <div class="line-break"></div>
-        `
+function getPurchaseFeed() {
+    checkout.style.display = "block"
+    checkoutList.innerHTML = ""
+
+    shoppingList.forEach( (item,index) => {
+        checkoutList.innerHTML += `
+                <div class="checkout-item" id="checkout-item"> 
+                    ${item.name}
+                </div> 
+                <button class="remove-item-btn" data-remove="${index}">remove</button>
+                <div class="checkout-price" id="checkout-price">    
+                    $${item.price} 
+                </div>
+                <div class="line-break"></div>
+            `
+    })        
   
     if (shoppingList) {
         let sum = 0
