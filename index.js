@@ -3,10 +3,9 @@ import { menuArray } from "./data.js";
 
 let checkoutList = document.getElementById("checkout-list")
 let checkout = document.getElementById("checkout")
-let moduleEl = document.getElementById("module")
+let modalEl = document.getElementById("modal")
 const consentForm = document.getElementById("consent-form")
 let shoppingList = []
-
 
 document.addEventListener("click", function (e) {
     if (e.target.dataset.increase) {
@@ -18,25 +17,29 @@ document.addEventListener("click", function (e) {
     else if (e.target.id == "purchase-btn") {
         completeOrder()
     }
-    else if (e.target.id == "pay-btn") {
-        payingOrder()
-    }
 })
 
-function payingOrder() {
+modalEl.addEventListener("submit", function(e) {
+    e.preventDefault()
     const formData = new FormData(consentForm)
-    console.log(formData)
-    const userName = formData.get("userName") 
-    moduleEl.style.display = "none"
+    const userName = formData.get("user-name") 
+    modalEl.style.display = "none"
     checkout.innerHTML = ""
 
     document.getElementById("finished-order").innerHTML = `
         <div class="thankyou-text">Thanks, ${userName}! Your order  is on its way!</div>
     `
-}
+})
 
-function completeOrder() {    
-    moduleEl.style.display = "block"
+function completeOrder() {
+    modalEl.style.display = "block"   
+
+    let buttons = document.getElementsByClassName("increase")
+    let removeButtons = document.getElementsByClassName("remove-item-btn")
+    for(let i = 0; i<removeButtons.length; i++) {
+        buttons[i].disabled = true
+        removeButtons[i].disabled = true
+    }
 }
 
 function removeFoodItem(index) {    
@@ -100,13 +103,12 @@ function getFeedHTML() {
                             <button class="increase" data-increase="${item.id}" id="increase">+</button>
                         </ul>
                     </div>
-                `
+                `                            
         })
-        return feedHTML    
+        return feedHTML
 }
-getFeedHTML()
 
 function render() {
-    document.getElementById("feed").innerHTML = getFeedHTML()
+    document.getElementById("feed").innerHTML = getFeedHTML()    
 }
 render()

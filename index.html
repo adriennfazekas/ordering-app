@@ -26,15 +26,16 @@
                 <h2 class="checkout-totel-price" id="checkout-totel-price">Total price: $ </h2>
                 <button class="purchase-btn" id="purchase-btn">Complete order</button>
             </div>
-                <!-- MODULE SECTION -->
-            <div class="module" id="module">
-                <h1 class="module-title" id="module-title">Enter card details</h1>
+                <!-- MODAL SECTION -->
+            <div class="modal" id="modal">
+                <h1 class="modal-title" id="modal-title">Enter card details</h1>
                 <form id="consent-form">
-                    <input name="userName" type="text" placeholder="Enter your name" required>
-                    <input name="userName" type="number" placeholder="Enter card number" required>
-                    <input name="userName" type="number" placeholder="Enter CVV" required>
+                    <input class="input" id="user-name" name="user-name" type="text" placeholder="Enter your name" required>
+                    <input class="input" id="user-credit-card" name="user-credit-card" type="text" minlength="16" maxlength="16" placeholder="Enter card number" required>
+                    <input class="input" id="user-card-cvv" name="user-card-cvv" type="password" minlength="3" maxlength="3" placeholder="Enter CVV" required>
+                    <button type="submit" class="pay-btn" id="pay-btn">Pay</button>
                 </form>                
-                <button class="pay-btn" id="pay-btn">Pay</button>
+                
             </div>
             <div class="finished-order" id="finished-order">
                 
