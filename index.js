@@ -35,10 +35,14 @@ function completeOrder() {
     modalEl.style.display = "block"   
 
     let buttons = document.getElementsByClassName("increase")
+    console.log(buttons)
+    for(let i = 0; i<buttons.length; i++) {
+        buttons[i].disabled = true  
+    }
     let removeButtons = document.getElementsByClassName("remove-item-btn")
+    console.log(removeButtons)
     for(let i = 0; i<removeButtons.length; i++) {
-        buttons[i].disabled = true
-        removeButtons[i].disabled = true
+        removeButtons[i].disabled = true  
     }
 }
 
